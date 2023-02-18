@@ -42,12 +42,31 @@ INSTALLED_APPS = [
 
     # 3rd Party
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'allauth',
+    'allauth.account',
+    'dj_rest_auth.registration',
+    'allauth.socialaccount',
 
     #  Local
     'chats.apps.ChatsConfig',
     'api.apps.ApiConfig',
     'frontend.apps.FrontendConfig',
 ]
+
+# Locks down every API endpoint built without authentication
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSED':[
+        # keep for now for the browserable api
+        'rest framework.authentication.SessionAuthentication',
+        #  for token-based implementation in react
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,3 +155,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#staticfiles-dirs
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'frontend/static/build/static'),)
 REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend/static')
+
+# Site ID
+# https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-SITE_ID
+# implemented so different domains to access the same database
+SITE_ID = 1
+
+# Email Backend
+# https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-EMAIL_BACKEND
+'django.core.mail.backends.console.EmailBackend',
