@@ -19,9 +19,10 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api_v1/', include('api.urls')),
-    # Allows log in and log
+    # Includes all URLs in the REST Framework
     path('api-auth/', include('rest_framework.urls')),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
     path('', include('frontend.urls')),
-]
+] 
+

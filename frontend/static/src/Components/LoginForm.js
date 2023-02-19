@@ -2,8 +2,6 @@ import Cookies from "js-cookie";
 import {useState} from "react";
 
 const INITIAL_STATE = {
-    firstName: "",
-    lastName: "",
     username: "",
     email: "",
     password: "", 
@@ -47,7 +45,7 @@ function LoginForm({setAuth}){
                 body: JSON.stringify(state)
             }
             // .catch wil trigger as an error
-            const response = await fetch(('/dj-rest-auth/login/', options).catch(handleError));
+            const response = await fetch('/dj-rest-auth/login/', options).catch(handleError);
             if(!response.ok){
                 throw new Error("Network response was not OK")
             }
@@ -65,23 +63,6 @@ function LoginForm({setAuth}){
     
     return(
         <form onSubmit={handleSubmit}>
-            <label htmlFor="first-name">First Name</label>
-                <input 
-                id="first-name"
-                type="text"
-                placeholder="Enter First Name"
-                name="firstName"
-                value={state.firstName}
-                onChange={handleInput}/>            
-
-            <label htmlFor="last-name">Last Name</label>
-                <input 
-                id="last-name"
-                type="text"
-                placeholder="Enter Last Name"
-                name="lastName"
-                value={state.lastName}
-                onChange={handleInput}/>
 
             <label htmlFor="username">Username</label>
                 <input 

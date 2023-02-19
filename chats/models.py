@@ -1,20 +1,20 @@
 from django.db import models
 
-class User(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField( max_length=255)
-    username = models.CharField(max_length=255)
-    email = models.URLField()
+# class User(models.Model):
+#     first_name = models.CharField(max_length=255)
+#     last_name = models.CharField( max_length=255)
+#     username = models.CharField(max_length=255)
+#     email = models.URLField()
 
-    def __str__(self):
-        return self.username
+#     def __str__(self):
+#         return self.username
     
 
 class Channel(models.Model):
     name = models.CharField(max_length=255)
     # Will eventually need Foreign Keys
     creator = models.CharField(max_length=255)
-    participants = models.ManyToManyField(User, null=True, blank=True)
+    
 
     def __str__(self):
         return self.name
