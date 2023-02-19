@@ -7,4 +7,6 @@ urlpatterns = [
     path("channels/<int:pk>/", views.ChannelDetail.as_view()),
     path("users/", views.UserList.as_view()),
     path("users/<int:pk>/", views.UserDetail.as_view()),
+
+    path('api/users/', views.CreateUser.as_view(), name='account-create'),   
 ]
