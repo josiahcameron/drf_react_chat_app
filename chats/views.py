@@ -4,10 +4,12 @@ from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
+from rest_framework.authentication import TokenAuthentication
 from .models import Channel, Chat
 from .serializers import ChannelSerializer, UserSerializer
 from django.contrib.auth.models import User
 from .permissions import IsCreatorOrReadOnly
+from frontend.static.src.Components import RegistrationForm 
 
 
 

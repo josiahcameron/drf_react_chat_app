@@ -2,7 +2,7 @@
 
 from rest_framework import permissions
 
-#Custom permission that to only allow creators to edit; permission will be set on a specific view
+# Custom permission that to only allow creators to edit; permission will be set on a specific view
 class IsCreatorOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         # 'SAFE_METHODS' are methods that don't modify, so they're safe for other users to use on an object
